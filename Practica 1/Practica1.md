@@ -37,3 +37,110 @@ ejemplo del rol de cada uno en alguna aplicación distribuida que corra sobre In
 
 8. _Analice qué tipo de red es una red de telefonía y qué tipo de red es Internet._
 >Una red de telefonía es una red de conmutación de circuitos y Internet es una red de conmutación de paquetes.
+
+9. _¿Qué ventajas tiene una implementación basada en capas o niveles?_
+> A principio de los 80' las compañı́as comenzaron a
+implementar redes propias (privadas y cerradas). Estas fueron las primeras redes propietarias las cuales tenian sus propias especificaciones (protocolos), esto hacia que fueran incompatibles entre si, complejas y que la evolucion de las mismas fuese lenta. Por este motivo se creo el modelo de capas mejor conocido como Layering cuya funcion es dividir la complejidad en componentes reusables.
+En cuestion el Layering brinda los siguientes beneficios:
+  + Reduce complejidad en componente más pequeñas.
+  + Las capas de abajo ocultan la complejidad a las de arriba,
+abstracción.
+  + Las capas de arriba utilizan servicios de las de abajo:
+Interfaces, similar a APIs.
+  + Los cambios en una capa no deberı́an afectar a las demás
+si la interfaz se mantiene.
+  + Facilita el desarrollo, evolución de las componentes de red
+asegurando interoperabilidad.
+  + Facilita aprendizaje, diseño y administración de las redes.
+
+10. _¿Cómo se llama la PDU de cada una de las siguientes capas: Aplicación, Transporte, Red y Enlace?_
+
+
+  |Capa      |PDU                   |
+  |----------|:---------------------|
+  |Aplicacion|Aplication byte stream|
+  |Transporte|TCP Segment           |
+  |Red       |IP Datagram           |
+  |Enlace    |Ethernet Frame        |
+
+11\. _¿Qué es la encapsulación? Si una capa realiza la encapsulación de datos, ¿qué capa del nodo receptor
+realizará el proceso inverso?_
+>Encapsulación es un método de diseño modular de protocolos de comunicación en el cual las funciones lógicas de una red son abstraídas ocultando información a las capas de nivel superior.
+
+12\. _Describa cuáles son las funciones de cada una de las capas del stack TCP/IP o protocolo de Internet._
+
+
+  |Capa      |Funcion                                               |
+  |----------|:-----------------------------------------------------|
+  |Aplicacion|Servicios de red a los usuarios, a procesos y aplicaciones. Tambien representacion de datos y encripcion.       |
+  |Transporte|Conexion entre terminales y fiabilidad.               |
+  |Red       |Determinacion de camino y IP (Direccionamiento logico)|
+  |Enlace    |Comunicacion entre entes directamente conectados. Comunicar una misma red. Acceso al Medio. |
+  |Fisica    |Transportar la informacion como señal por el medio fisico. Caracteristicas fisicas. Informacion binaria, digital.            |
+
+13\. _Compare el modelo OSI con la implementación TCP/IP.
+
+  `Modelo de capas OSI:`
+
+
+  |Capa        |Funcion                                               |
+  |------------|:-----------------------------------------------------|
+  |Aplicacion  |Servicios de red a los usuarios y a procesos, aplicaciones.                                                       |
+  |Presentacion|Representacion de datos y encripcion (formato de los datos.)                                                             |
+  |Sesion      |Comunicacion entre hosts (mantener track de sesiones de la aplicacion.)                                                     |
+  |Transporte  |Conexion entre terminales y fiabilidad.               |
+  |Red         |Determinacion de camino y IP (Direccionamiento logico)|
+  |Enlace      |Comunicacion entre entes directamente conectados. Comunicar una misma red. Acceso al Medio.                           |
+  |Fisica      |Transportar la informacion como señal por el medio fisico. Caracteristicas fisicas. Informacion binaria, digital.      |
+
+
+>Similitudes:
+  + Ambos se dividen en capas.
+  + Ambos tienen capas de aplicación, aunque incluyen servicios
+  + distintos.
+  + Ambos tienen capas de transporte similares.
+  + Ambos tienen capa de red similar pero con distinto nombre.
+  + Se supone que la tecnologı́a es de conmutación de paquetes
+  (no de conmutación de circuitos).
+  + Es importante conocer ambos modelos.
+
+>Diferencias:
+  + TCP/IP combina las funciones de la capa de presentación y de
+sesión en la capa de aplicación.
+  + TCP/IP combina la capas de enlace de datos y la capa fı́sica
+del modelo OSI en una sola capa.
+  + TCP/IP más simple porque tiene menos capas.
+  + Los protocolos TCP/IP son los estándares en torno a los cuales
+se desarrolló Internet, de modo que la credibilidad del modelo
+  + TCP/IP se debe en gran parte a sus protocolos.
+  + El modelo OSI es un modelo “más” de referencia, teórico,
+aunque hay implementaciones.
+
+
+# Extra
+
+##### Explicacion mas detallada sobre el encapsulamientos
+> Suponiendo que una persona envia a otra un mail los pasos de encapsulamiento en el model TCP/IP serian los siguientes:
+
+  >1\. *Crear los datos* (Capa de Aplicacion).
+
+  >Cuando un usuario envía un mensaje de correo electrónico, sus caracteres alfanuméricos se convierten en datos que puedan recorrer la red. Si es necesario, la capa de presentación recodifica el mensaje para que pueda ser entendido en el otro extremo.
+
+  >2\. *Dividir los datos para ser transportados deextremo a extremo* (Capa de Transporte).
+
+  >Los datos del usuario se dividen para ser transportados por la red. Esta función la realiza la capa de transporte. Cada fragmento que crea esta capa se denomina segmento. Cada segmento incluye una información de control específica del protocolo que se este usando en esta capa.
+
+  >3\. *Agregar la dirección de red al encabezado* (Capa de Red).
+
+  >La capa de red hace que un segmento se coloque en uno o varios
+paquetes o datagramas, que contienen el encabezado de red con las direcciones del host origen y del host destino. Estas direcciones ayudan a los dispositivos de red a enviar los paquetes a través de la red por una ruta seleccionada.
+
+  >4\. *Agregar la dirección local al encabezado de enlace de datos* (Capa de Enlace).
+
+  >Cada dispositivo debe poner el paquete dentro de una trama, función de la que se encarga la capa de enlace. La trama tendrá como destinatario el más próximo dispositivo de red conectado directamente en el enlace.
+
+  >5\. *Realizar la conversión a bits para su transmisión* (Capa Fisica).
+
+  >La trama por fin debe convertirse en un patrón de unos y ceros (bits) para su transmisión a través del medio (por lo general un cable).
+
+  ![encapsulamiento](https://cloud.githubusercontent.com/assets/13878860/24420003/8dd98c96-13f1-11e7-823d-606fd39f5e4c.jpg)
