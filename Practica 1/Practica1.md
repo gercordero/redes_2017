@@ -63,11 +63,11 @@ asegurando interoperabilidad.
   |Red       |IP Datagram           |
   |Enlace    |Ethernet Frame        |
 
-11\. _¿Qué es la encapsulación? Si una capa realiza la encapsulación de datos, ¿qué capa del nodo receptor
+11. _¿Qué es la encapsulación? Si una capa realiza la encapsulación de datos, ¿qué capa del nodo receptor
 realizará el proceso inverso?_
 >Encapsulación es un método de diseño modular de protocolos de comunicación en el cual las funciones lógicas de una red son abstraídas ocultando información a las capas de nivel superior.
 
-12\. _Describa cuáles son las funciones de cada una de las capas del stack TCP/IP o protocolo de Internet._
+12. _Describa cuáles son las funciones de cada una de las capas del stack TCP/IP o protocolo de Internet._
 
 
   |Capa      |Funcion                                               |
@@ -78,7 +78,7 @@ realizará el proceso inverso?_
   |Enlace    |Comunicacion entre entes directamente conectados. Comunicar una misma red. Acceso al Medio. |
   |Fisica    |Transportar la informacion como señal por el medio fisico. Caracteristicas fisicas. Informacion binaria, digital.            |
 
-13\. _Compare el modelo OSI con la implementación TCP/IP.
+13. _Compare el modelo OSI con la implementación TCP/IP._
 
   `Modelo de capas OSI:`
 
@@ -119,27 +119,27 @@ aunque hay implementaciones.
 
 # Extra
 
-##### Explicacion mas detallada sobre el encapsulamientos
-> Suponiendo que una persona envia a otra un mail los pasos de encapsulamiento en el model TCP/IP serian los siguientes:
+#### Explicacion mas detallada sobre el encapsulamientos
+*Suponiendo que una persona envia a otra un mail los pasos de encapsulamiento en el model TCP/IP serian los siguientes:*
 
-  >1\. *Crear los datos* (Capa de Aplicacion).
+  1\. *Crear los datos* (Capa de Aplicacion).
 
   >Cuando un usuario envía un mensaje de correo electrónico, sus caracteres alfanuméricos se convierten en datos que puedan recorrer la red. Si es necesario, la capa de presentación recodifica el mensaje para que pueda ser entendido en el otro extremo.
 
-  >2\. *Dividir los datos para ser transportados deextremo a extremo* (Capa de Transporte).
+  2\. *Dividir los datos para ser transportados deextremo a extremo* (Capa de Transporte).
 
   >Los datos del usuario se dividen para ser transportados por la red. Esta función la realiza la capa de transporte. Cada fragmento que crea esta capa se denomina segmento. Cada segmento incluye una información de control específica del protocolo que se este usando en esta capa.
 
-  >3\. *Agregar la dirección de red al encabezado* (Capa de Red).
+  3\. *Agregar la dirección de red al encabezado* (Capa de Red).
 
   >La capa de red hace que un segmento se coloque en uno o varios
 paquetes o datagramas, que contienen el encabezado de red con las direcciones del host origen y del host destino. Estas direcciones ayudan a los dispositivos de red a enviar los paquetes a través de la red por una ruta seleccionada.
 
-  >4\. *Agregar la dirección local al encabezado de enlace de datos* (Capa de Enlace).
+  4\. *Agregar la dirección local al encabezado de enlace de datos* (Capa de Enlace).
 
   >Cada dispositivo debe poner el paquete dentro de una trama, función de la que se encarga la capa de enlace. La trama tendrá como destinatario el más próximo dispositivo de red conectado directamente en el enlace.
 
-  >5\. *Realizar la conversión a bits para su transmisión* (Capa Fisica).
+  5\. *Realizar la conversión a bits para su transmisión* (Capa Fisica).
 
   >La trama por fin debe convertirse en un patrón de unos y ceros (bits) para su transmisión a través del medio (por lo general un cable).
 
